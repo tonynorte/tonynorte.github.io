@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthony Vega · Full Stack Engineer</title>
+<meta name="description" content="Anthony Vega, senior full stack engineer (React, Java, Node.js) with 14+ years building enterprise web applications for U.S. clients. Based in Costa Rica, open to remote U.S. roles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mist: #EEF2EE;
+    --paper: #F8FAF7;
+    --ink: #15241C;
+    --ink-soft: #4A5C52;
+    --moss: #2E6A4C;
+    --fern: #8DB580;
+    --lichen: #D6E2D3;
+    --amber: #B9801A;
+    --log-bg: #16271F;
+    --log-ink: #D8E6D5;
+    --log-dim: #7E9A88;
+    --rule: #C9D6C6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --mist: #101A15;
+      --paper: #15211B;
+      --ink: #E4EDE3;
+      --ink-soft: #A3B6A8;
+      --moss: #8DC49F;
+      --fern: #5E8A63;
+      --lichen: #22352B;
+      --amber: #E0A84A;
+      --log-bg: #0B1410;
+      --log-ink: #D8E6D5;
+      --log-dim: #6E8A78;
+      --rule: #2A3E33;
+    }
+  }
+  :root[data-theme="dark"] {
+    --mist: #101A15; --paper: #15211B; --ink: #E4EDE3; --ink-soft: #A3B6A8;
+    --moss: #8DC49F; --fern: #5E8A63; --lichen: #22352B; --amber: #E0A84A;
+    --log-bg: #0B1410; --log-ink: #D8E6D5; --log-dim: #6E8A78; --rule: #2A3E33;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--mist);
+    color: var(--ink);
+    font-family: "Schibsted Grotesk", system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--moss); text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header.site {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 22px 0; gap: 16px; flex-wrap: wrap;
+  }
+  .mark { font-weight: 800; font-size: 1.05rem; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+  nav ul { list-style: none; display: flex; gap: 24px; margin: 0; padding: 0; flex-wrap: wrap; }
+  nav a { color: var(--ink-soft); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+  nav a:hover { color: var(--ink); }
+
+  /* Hero */
+  .hero {
+    display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px;
+    align-items: center; padding: 56px 0 88px;
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 6.2vw, 4.6rem);
+    line-height: 1.02; letter-spacing: -0.035em; font-weight: 800;
+    margin: 0 0 24px;
+  }
+  .hero h1 span { display: block; color: var(--ink-soft); font-weight: 600; }
+  .lede { font-size: 1.2rem; color: var(--ink-soft); max-width: 34ch; margin: 0 0 32px; }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 13px 22px; border-radius: 999px;
+    font-weight: 600; font-size: 0.98rem; text-decoration: none;
+    border: 2px solid var(--moss);
+  }
+  .btn.primary { background: var(--moss); color: var(--paper); }
+  .btn.primary:hover { filter: brightness(1.08); }
+  .btn.ghost { color: var(--moss); }
+  .btn.ghost:hover { background: var(--lichen); }
+  .where { margin-top: 28px; font-size: 0.95rem; color: var(--ink-soft); }
+
+  /* Event log: the one memorable element */
+  .log {
+    background: var(--log-bg); color: var(--log-ink);
+    border-radius: 14px; padding: 22px 22px 18px;
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.82rem; line-height: 1.55;
+    box-shadow: 0 30px 60px -30px rgba(21, 36, 28, 0.55);
+    overflow: hidden;
+  }
+  .log-head { display: flex; justify-content: space-between; color: var(--log-dim); margin-bottom: 14px; gap: 12px; }
+  .log-head .live::before {
+    content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--fern); margin-right: 8px; vertical-align: 1px;
+  }
+  .log ol { list-style: none; margin: 0; padding: 0; }
+  .log li {
+    display: grid; grid-template-columns: 4.2ch 1fr; gap: 12px;
+    padding: 7px 0; border-top: 1px solid rgba(216, 230, 213, 0.08);
+    opacity: 0; transform: translateY(6px);
+    animation: arrive 0.45s ease-out forwards;
+  }
+  .log li:first-child { border-top: 0; }
+  .log .yr { color: var(--log-dim); }
+  .log .ev { color: #A8D3A0; }
+  .log .msg { display: block; color: var(--log-ink); }
+  .log .ok { color: #E7B65C; }
+  .log li:nth-child(1) { animation-delay: 0.15s; }
+  .log li:nth-child(2) { animation-delay: 0.45s; }
+  .log li:nth-child(3) { animation-delay: 0.75s; }
+  .log li:nth-child(4) { animation-delay: 1.05s; }
+  .log li:nth-child(5) { animation-delay: 1.35s; }
+  .log li:nth-child(6) { animation-delay: 1.65s; }
+  .log-foot { margin-top: 12px; color: var(--log-dim); }
+  @keyframes arrive { to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .log li { animation: none; opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* Sections */
+  section.block { padding: 72px 0; border-top: 1px solid var(--rule); }
+  .block h2 {
+    font-size: clamp(1.8rem, 3.6vw, 2.5rem); letter-spacing: -0.025em; line-height: 1.1;
+    margin: 0 0 12px; font-weight: 800;
+  }
+  .block .intro { color: var(--ink-soft); max-width: 60ch; margin: 0 0 44px; }
+
+  /* Case studies */
+  .case {
+    display: grid; grid-template-columns: 1fr 1.6fr; gap: 40px;
+    padding: 36px 0; border-top: 1px solid var(--rule);
+  }
+  .case:first-of-type { border-top: 0; padding-top: 0; }
+  .case h3 { font-size: 1.45rem; line-height: 1.2; letter-spacing: -0.015em; margin: 0 0 10px; }
+  .case .ctx { color: var(--ink-soft); font-size: 0.95rem; margin: 0 0 16px; }
+  .stack { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+  .stack li { background: var(--lichen); color: var(--ink); font-size: 0.82rem; padding: 4px 10px; border-radius: 999px; font-weight: 500; }
+  .case dl { margin: 0; display: grid; gap: 18px; }
+  .case dt { font-weight: 700; font-size: 0.98rem; margin-bottom: 2px; }
+  .case dd { margin: 0; color: var(--ink-soft); max-width: 62ch; }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px 40px; }
+  .skills h3 { font-size: 1.05rem; margin: 0 0 8px; }
+  .skills p { margin: 0; color: var(--ink-soft); font-size: 0.98rem; }
+  .skills .primary-skill h3 { color: var(--moss); }
+
+  /* Experience timeline: real sequence */
+  .timeline { list-style: none; margin: 0; padding: 0; position: relative; }
+  .timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--rule); }
+  .timeline li { position: relative; padding: 0 0 36px 40px; }
+  .timeline li::before {
+    content: ""; position: absolute; left: 0; top: 7px; width: 16px; height: 16px;
+    border-radius: 50%; background: var(--mist); border: 3px solid var(--moss);
+  }
+  .timeline li:first-child::before { background: var(--moss); }
+  .timeline .when { font-size: 0.9rem; color: var(--ink-soft); }
+  .timeline h3 { margin: 2px 0 6px; font-size: 1.2rem; }
+  .timeline h3 small { font-weight: 500; color: var(--ink-soft); font-size: 1rem; }
+  .timeline p { margin: 0; color: var(--ink-soft); max-width: 66ch; }
+
+  .edu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 16px; }
+  .edu div { padding-top: 14px; border-top: 2px solid var(--moss); }
+  .edu strong { display: block; }
+  .edu span { color: var(--ink-soft); font-size: 0.95rem; }
+
+  /* Contact */
+  .contact { background: var(--moss); color: var(--paper); border-radius: 20px; padding: 56px 48px; margin: 72px 0 40px; }
+  .contact h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 14px; }
+  .contact p { max-width: 52ch; margin: 0 0 28px; opacity: 0.9; }
+  .contact .btn { border-color: var(--paper); }
+  .contact .btn.primary { background: var(--paper); color: var(--moss); }
+  .contact .btn.ghost { color: var(--paper); }
+  .contact .btn.ghost:hover { background: rgba(255,255,255,0.12); }
+  :root[data-theme="dark"] .contact, :root:not([data-theme="light"]) .contact { }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .contact { background: var(--lichen); color: var(--ink); }
+    :root:not([data-theme="light"]) .contact .btn { border-color: var(--moss); }
+    :root:not([data-theme="light"]) .contact .btn.primary { background: var(--moss); color: var(--mist); }
+    :root:not([data-theme="light"]) .contact .btn.ghost { color: var(--moss); }
+  }
+
+  footer { padding: 0 0 40px; color: var(--ink-soft); font-size: 0.9rem; }
+
+  /* Responsive */
+  @media (max-width: 880px) {
+    .hero { grid-template-columns: 1fr; padding: 32px 0 64px; gap: 40px; }
+    .case { grid-template-columns: 1fr; gap: 20px; }
+    .skills, .edu { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 16px; }
+    nav ul { gap: 16px; }
+    .skills, .edu { grid-template-columns: 1fr; }
+    .contact { padding: 40px 24px; border-radius: 16px; }
+    .log { font-size: 0.76rem; padding: 18px 16px 14px; }
+    section.block { padding: 56px 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="site">
+    <a class="mark" href="#top">Anthony Vega</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <h1 id="hero-title">Full stack engineer. <span>React on the front, Java and Node on the back.</span></h1>
+        <p class="lede">For 14 years I've built and modernized enterprise web apps for U.S. companies like T-Mobile, JPMorgan Chase, Reebok and Merck.</p>
+        <div class="actions">
+          <a class="btn primary" href="mailto:tonynorte@gmail.com">Email me</a>
+          <!-- Put your resume PDF next to this file and name it resume.pdf -->
+          <a class="btn ghost" href="resume.pdf">Download resume</a>
+        </div>
+        <p class="where">Based in Costa Rica. Open to remote roles in U.S. time zones.</p>
+      </div>
+
+      <div class="log" role="img" aria-label="Career timeline shown as an event log: Systems Engineering degree in 2011, Accenture from 2012, COVID-19 research platform, 3Pillar Global from 2022, Babel from 2026.">
+        <div class="log-head" aria-hidden="true"><span class="live">career.events</span><span>correlationId: av-14y</span></div>
+        <ol aria-hidden="true">
+          <li><span class="yr">2011</span><span><span class="ev">degree.completed</span><span class="msg">Systems Engineering, Universidad Nacional</span></span></li>
+          <li><span class="yr">2012</span><span><span class="ev">role.started</span><span class="msg">Accenture, enterprise front end for U.S. clients</span></span></li>
+          <li><span class="yr">2020</span><span><span class="ev">project.shipped</span><span class="msg">COVID-19 research search, Angular + ElasticSearch</span></span></li>
+          <li><span class="yr">2022</span><span><span class="ev">role.started</span><span class="msg">3Pillar Global, Java + Node on AWS</span></span></li>
+          <li><span class="yr">2026</span><span><span class="ev">service.deployed</span><span class="msg">Event-driven notifications on Azure</span></span></li>
+          <li><span class="yr">now</span><span><span class="ev">status</span><span class="msg"><span class="ok">202 Accepted</span>, open to new roles</span></span></li>
+        </ol>
+        <div class="log-foot" aria-hidden="true">6 events · 0 failed</div>
+      </div>
+    </section>
+
+    <section class="block" id="work" aria-labelledby="work-title">
+      <h2 id="work-title">Selected work</h2>
+      <p class="intro">Most of my work is for clients under NDA, so these case studies describe the problem and my role without sharing private code.</p>
+
+      <article class="case">
+        <div>
+          <h3>Event-driven notifications for a digital-signature platform</h3>
+          <p class="ctx">Babel, for PROCOMER · 2026</p>
+          <ul class="stack">
+            <li>Azure Logic Apps</li><li>Node.js</li><li>SQL Server</li><li>Office 365</li><li>PowerShell</li>
+          </ul>
+        </div>
+        <dl>
+          <div><dt>The problem</dt><dd>Signers and viewers needed reliable email updates at every step of the signing process, and the platform had no dedicated notification layer.</dd></div>
+          <div><dt>What I did</dt><dd>I designed and built the service end to end. I defined the JSON event contract and the integration patterns: post-commit publishing, retries with backoff and correlation IDs. The workflow answers with an async 202, routes each event, and sends emails in parallel. Callbacks from the external signing service are validated with tokens.</dd></div>
+          <!-- Add a real number here if you have one, e.g. "X documents per month" -->
+          <div><dt>The result</dt><dd>A fault-tolerant flow with automated admin alerts, where every event can be traced from the back end to the inbox. I validated each event and failure scenario with test scripts, and I still own the service in production.</dd></div>
+        </dl>
+      </article>
+
+      <article class="case">
+        <div>
+          <h3>Search interface for COVID-19 research</h3>
+          <p class="ctx">Accenture · 2020</p>
+          <ul class="stack">
+            <li>Angular 9</li><li>ElasticSearch</li><li>REST APIs</li><li>TypeScript</li>
+          </ul>
+        </div>
+        <dl>
+          <div><dt>The problem</dt><dd>Researchers needed to find pandemic-related scientific data quickly across a large, fast-growing body of documents.</dd></div>
+          <div><dt>What I did</dt><dd>I built the search interface in Angular and integrated it with ElasticSearch through REST APIs, focusing on fast queries and a clear way to filter and read results.</dd></div>
+          <div><dt>The result</dt><dd>Researchers could retrieve relevant data in seconds instead of digging through sources by hand, during a time when speed really mattered.</dd></div>
+        </dl>
+      </article>
+
+      <article class="case">
+        <div>
+          <h3>AI-assisted development workflows</h3>
+          <p class="ctx">3Pillar Global, for a U.S. client · 2022–2026</p>
+          <ul class="stack">
+            <li>GitHub Copilot</li><li>OpenAI APIs</li><li>Java</li><li>Node.js</li><li>AWS</li>
+          </ul>
+        </div>
+        <dl>
+          <div><dt>The problem</dt><dd>Starting new services meant repeating the same setup, scaffolding and documentation by hand, which was slow and inconsistent across the team.</dd></div>
+          <div><dt>What I did</dt><dd>I designed agentic workflows with GitHub Copilot and OpenAI APIs that generate repositories, scaffold services and write documentation, while I kept building end-to-end features in Angular, Java and Node.js on AWS.</dd></div>
+          <div><dt>The result</dt><dd>New services started from a consistent base, and the team spent less time on setup and more on features.</dd></div>
+        </dl>
+      </article>
+    </section>
+
+    <section class="block" id="skills" aria-labelledby="skills-title">
+      <h2 id="skills-title">Skills</h2>
+      <p class="intro">Strongest in React and Java, with years of production work across the rest.</p>
+      <div class="skills">
+        <div class="primary-skill"><h3>Front end</h3><p>React, Angular, TypeScript, JavaScript, HTML5, CSS3, reusable component libraries</p></div>
+        <div class="primary-skill"><h3>Back end</h3><p>Java with Spring Boot and Hibernate, Node.js, C# and .NET, REST APIs, event-driven integrations</p></div>
+        <div><h3>Cloud</h3><p>AWS (EC2, S3, RDS), Microsoft Azure (Logic Apps, API Connections)</p></div>
+        <div><h3>Data</h3><p>SQL Server, PostgreSQL, Oracle, MySQL, ElasticSearch</p></div>
+        <div><h3>Delivery</h3><p>CI/CD pipelines, Git, Webpack, PowerShell, Agile and Scrum, code reviews, estimation</p></div>
+        <div><h3>AI tooling</h3><p>Claude, GitHub Copilot, OpenAI APIs, spec-driven and agentic development</p></div>
+      </div>
+    </section>
+
+    <section class="block" id="experience" aria-labelledby="exp-title">
+      <h2 id="exp-title">Experience</h2>
+      <p class="intro">Fourteen years of remote and distributed work with teams in the U.S., Latin America and India.</p>
+      <ol class="timeline">
+        <li>
+          <div class="when">Apr 2026 – present · Heredia, Costa Rica</div>
+          <h3>Full Stack Developer <small>at Babel</small></h3>
+          <p>Scalable web apps and APIs with Node.js and React, and an event-driven notification service on Azure.</p>
+        </li>
+        <li>
+          <div class="when">Jan 2022 – Mar 2026 · Remote, U.S. client</div>
+          <h3>Senior Software Engineer <small>at 3Pillar Global</small></h3>
+          <p>End-to-end features with Angular, Java and Node.js, REST APIs on AWS, and AI-assisted workflows for the team.</p>
+        </li>
+        <li>
+          <div class="when">Jul 2012 – Dec 2021 · Costa Rica</div>
+          <h3>Senior Web Developer <small>at Accenture</small></h3>
+          <p>Front-end development and platform modernization for T-Mobile, JPMorgan Chase, Reebok and Merck, including reusable UI frameworks, ElasticSearch integrations and CI/CD pipelines.</p>
+        </li>
+        <li>
+          <div class="when">2011 – 2012 · Costa Rica</div>
+          <h3>Analyst and Programmer <small>at E.S.P.H.</small></h3>
+          <p>Web applications in Java and PHP, with MySQL and Oracle databases.</p>
+        </li>
+      </ol>
+
+      <div class="edu">
+        <div><strong>B.S. in Systems Engineering</strong><span>Universidad Nacional, Costa Rica</span></div>
+        <div><strong>C# and .NET</strong><span>Certification, 2026</span></div>
+        <div><strong>Spec-Driven Development with AI</strong><span>Certification, 2026</span></div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Let's build something.</h2>
+      <p>I'm looking for a long-term full stack role with React and Java. The fastest way to reach me is email.</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:tonynorte@gmail.com">tonynorte@gmail.com</a>
+        <!-- Replace the # with your real profile links -->
+        <a class="btn ghost" href="https://www.linkedin.com/in/anthony-vega-14b65950/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/tonynorte" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>Anthony Vega · Costa Rica · Spanish and English</footer>
+</div>
+</body>
+</html>
